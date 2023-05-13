@@ -1,18 +1,22 @@
+import { useState } from "react";
 import "./App.css";
-import { Greet } from "./components/Greet";
-import { Heading } from "./components/Heading";
-import { Oscar } from "./components/Oscar";
-import { Status } from "./components/Status";
+import { Button } from "./components/Button";
+import { Input } from "./components/Input";
 
 function App() {
+    const [value, setValue] = useState<string>("");
+
     return (
         <div className="App">
-            <Status status="loading" />
-            <Heading>Placeholder text</Heading>
-            <Oscar>
-                <Heading>Oscar goes to Leonardo Dicaprio!</Heading>
-            </Oscar>
-            <Greet name={"Dong Joon"} isLoggedIn={false} />
+            <Button
+                handleClick={(event, id) =>
+                    console.log("Button Clicked!", event, id)
+                }
+            />
+            <Input
+                value={value}
+                handleChange={(event) => setValue(event.target.value)}
+            />
         </div>
     );
 }
